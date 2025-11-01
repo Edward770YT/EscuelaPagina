@@ -1,0 +1,665 @@
+/* Reset / estilos globales        */
+/* Uso: normalizar paddings/margins y definir la fuente base */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Trebuchet MS;
+}
+
+/* Paleta aplicada directamente (variables eliminadas). Usamos colores literales para compatibilidad */
+/* amarillo pastel claro: #fff4c2, amarillo acento: #ffd86b */
+/* azul pastel claro: #bfeeff, azul acento: #7fd1ff */
+/* rojo pastel claro: #ffd6d6, rojo acento: #ff9a9a */
+/* texto oscuro: #222222, blanco: #ffffff */
+
+/* Header / navegación principal  */
+/* Uso: barra superior, contiene logo y enlaces de navegación */
+header {
+	/* Cabecera: mismo color que footer inferior (amarillo pastel) */
+	background-color: #ffd86b;
+	width: 100%;
+	height: 60px;
+	text-align: center;
+}
+
+.cabecera {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+	padding: 0 20px;
+	gap: 20px;
+}
+
+.logo {
+	/* Logo del sitio: tamaño y comportamiento */
+	height: 40px;
+	width: 40px;
+	object-fit: contain;
+}
+
+
+/* Menu (mobile-first): envolvemos .items-cabecera dentro de <details class="menu"> */
+.menu { display: block; }
+/* Siempre mostrar la lista de navegación: forzamos .items-cabecera visible en todos los tamaños */
+.menu summary.menu-summary {
+	/* ocultamos el summary ya que los enlaces estarán siempre visibles */
+	display: none;
+}
+.menu summary.menu-summary::-webkit-details-marker { display: none; }
+
+/* Mostrar siempre el contenedor de enlaces (no se oculta en móvil) */
+.menu + .items-cabecera {
+    display: flex;
+    flex-direction: row; /* mostrar en fila en todos los dispositivos */
+    gap: 20px;
+    align-items: center;
+    background: transparent; /* mantener la cabecera uniforme */
+    padding: 0 8px;
+    margin-left: auto; /* empujar enlaces a la derecha */
+    overflow: visible; /* permitir que el dropdown salga del contenedor */
+}
+
+/* Enlaces dentro del menú (móvil) */
+.menu + .items-cabecera a,
+.menu[open] + .items-cabecera a {
+	font-size: 1rem; /* unidades relativas para consistencia */
+	color: #000;
+	padding: 8px 12px;
+	border-radius: 8px;
+	text-align: center;
+}
+
+/* Establecer tamaño del teléfono en footer (legible) */
+.phone {
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+/* En pantallas más grandes mostramos el menú en línea (fila) */
+@media (min-width: 700px) {
+	/* En pantallas anchas ocultamos el summary principal y mostramos los enlaces en fila */
+	.menu summary.menu-summary { display: none; }
+	/* Mostrar siempre el contenedor de enlaces (siguiente sibling del details) */
+	.menu + .items-cabecera {
+		display: flex;
+		flex-direction: row;
+		background: transparent;
+		padding: 0;
+		gap: 30px;
+		align-items: center;
+	}
+	.menu + .items-cabecera a { color: black; }
+	.menu + .items-cabecera a { padding: 8px 12px; }
+
+	/* Asegurar que el submenú 'Más ▾' se muestre siempre en la barra superior en desktop */
+	.menu + .items-cabecera .dropdown {
+		position: relative;
+		display: inline-block;
+	}
+	.menu + .items-cabecera .dropdown > summary.drop-btn {
+		display: inline-block; /* mostrar el trigger en línea junto a los enlaces */
+		color: black;
+		background: transparent;
+		padding: 6px 8px;
+		margin: 0;
+	}
+	/* Quitar marcador por defecto del summary en navegadores que lo muestran */
+	.menu + .items-cabecera .dropdown > summary.drop-btn::-webkit-details-marker { display: none; }
+	.menu + .items-cabecera .dropdown > summary.drop-btn::marker { display: none; }
+	/* Mantener el menú desplegable posicionado respecto al trigger */
+	.menu + .items-cabecera .drop-menu { right: 0; left: auto; }
+}
+
+.items-cabecera a {
+	/* Estilo de los enlaces en la cabecera */
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+
+.items-cabecera a:hover {
+	/* Efecto hover para enlaces de cabecera */
+	background-color: #5b7feb;
+}
+
+/* Menu Desplegable "Más"*/
+.dropdown{position:relative}
+/* .drop-btn applies to both button and summary (cuando usamos <details>) */
+.drop-btn, .dropdown > summary.drop-btn {
+	background: transparent;
+	border: none;
+	color: #000;
+	font-weight: 700;
+	cursor: pointer;
+	padding: 8px 10px;
+	border-radius: 6px;
+	display: inline-block;
+}
+.drop-btn:focus, .dropdown > summary.drop-btn:focus{outline:2px solid rgba(0,0,0,0.12)}
+.drop-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:160px;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.18);display:none;flex-direction:column;padding:6px 6px;list-style:none;z-index:50}
+.drop-menu li{margin:0}
+.drop-menu a{display:block;padding:8px 12px;color:#000;text-decoration:none;border-radius:6px}
+.drop-menu a:hover{background:rgba(91,127,235,0.08)}
+/* Mostrar en hover (PC) o cuando el dropdown tiene foco interno (teclado) */
+.dropdown:hover .drop-menu,.dropdown:focus-within .drop-menu,.dropdown[open] .drop-menu{display:flex}
+
+/* Pequeño ajuste: el dropdown se maneja con posicionamiento absoluto
+	 para poder mostrarlo como panel emergente tanto en escritorio como en móvil. */
+
+/* ------------------------------- */
+/* Sección HERO / inicio principal */
+/* Uso: portada grande con título, subtítulo y CTA */
+/* ------------------------------- */
+.inicio {
+	/* Inicio: degradado amarillo pastel */
+	background: linear-gradient(180deg, #fff4c2 0%, #ffd86b 60%);
+	color: #222222;
+	min-height: 80vh;
+	display: flex;
+	align-items: center;
+	padding: 60px 6%;
+}
+
+.inicio-inner {
+	/* Contenedor interno centrado y con máximo ancho */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+	transition: transform .15s ease, box-shadow .15s ease;
+}
+
+/* Ajustes del contenido del hero */
+.inicio-inner { max-width: 1200px; margin: 0 auto; gap: 36px; }
+.i-left { flex: 1 1 60%; }
+.i-left .hero-title { font-size: 4.5rem; line-height: 1.02; font-weight: 900; margin-bottom: 12px; color: #222222; }
+.hero-sub { font-size: 1.05rem; color: rgba(0,0,0,0.75); margin-bottom: 22px; max-width: 640px; }
+.cta-btn {
+	display: inline-block;
+	background: #ffffff; /* botón blanco sobre fondo pastel */
+	color: #222222;
+	padding: 12px 20px;
+	border-radius: 999px;
+	text-decoration: none;
+	font-weight: 700;
+	box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+.cta-btn:active { transform: translateY(-2px); }
+
+@media (max-width: 900px) {
+	/* Mantener la cabecera en una sola línea en pantallas pequeñas */
+	.cabecera { flex-wrap: nowrap; }
+	.logo { height: 36px; width: 36px; }
+
+	/* Mostrar los enlaces en fila compacta dentro de la cabecera en móvil; no ocultamos enlaces */
+	.menu + .items-cabecera {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+		align-items: center;
+		background: transparent; /* quitar fondo para no aumentar altura */
+		padding: 0;
+		margin-left: auto; /* empujar enlaces a la derecha */
+		white-space: nowrap;
+		overflow-x: auto; /* permitir desplazamiento horizontal si hace falta */
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.menu + .items-cabecera a,
+	.menu[open] + .items-cabecera a {
+		padding: 6px 8px; /* menos padding para que quepan */
+		font-size: 0.95rem;
+	}
+
+	/* Estilo del dropdown en móvil: panel emergente bonito anclado al trigger */
+	.menu + .items-cabecera .dropdown { position: relative; }
+	.menu + .items-cabecera .dropdown .drop-menu {
+		/* En móvil colocamos el panel como fixed para evitar que se recorte por overflow */
+		position: fixed;
+		top: calc(60px + 8px); /* justo debajo de la cabecera */
+		right: 12px;
+		left: auto;
+		min-width: 180px;
+		max-width: 320px;
+		max-height: calc(100vh - 96px);
+		background: #ffffff;
+		box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+		border-radius: 12px;
+		padding: 10px;
+		display: none;
+		flex-direction: column;
+		z-index: 9999;
+		overflow: auto; /* permitir scroll interno si hay muchos items */
+	}
+	.menu + .items-cabecera .dropdown[open] .drop-menu { display: flex; }
+	.drop-menu a{ padding: 8px 10px; border-radius:8px }
+	.drop-menu a:hover{ background: rgba(91,127,235,0.06); }
+
+	.hero-title { font-size: 2.25rem; }
+	.i-right { width: 80%; height: 420px; max-width: 420px; }
+}
+
+.cta-btn:hover,
+.cta-btn:focus {
+	/* Interacción del botón*/
+	transform: translateY(-4px);
+	box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+}
+
+.i-right {
+	/* Columna derecha del hero (imagen) */
+	flex: 0 0 420px;
+	width: 420px;
+	height: 520px;
+	background-image: url('../imgs/aula02.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 18px;
+	box-shadow: 0 30px 80px rgba(2,9,23,0.5);
+	transform: translateY(6px);
+}
+
+/* Sección Nosotros / Historia */
+.Nosotros {
+	padding: 60px 6%;
+	/* Sección Nosotros: azul pastel */
+	background: linear-gradient(180deg, #bfeeff 0%, #7fd1ff 40%);
+}
+
+.nosotros-inner {
+	/* Layout en dos columnas para la sección Historia */
+	display: flex;
+	align-items: center;
+	gap: 36px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.n-left { flex: 0 0 48%; }
+
+.n-right { flex: 1 1 52%; }
+
+.imagen-01 {
+	/* Imagen destacada dentro de la sección Nosotros */
+	width: 100%;
+	height: 420px;
+	object-fit: cover;
+	border-radius: 16px;
+	box-shadow: 0 20px 50px rgba(216,27,96,0.15);
+	border: 6px solid rgba(255,255,255,0.06);
+	transform: translateY(0);
+}
+
+.n-card {
+	/* Tarjeta blanca con el texto de la historia */
+	position: relative;
+	padding: 34px 34px 28px 34px;
+	border-radius: 14px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.88));
+	box-shadow: 0 18px 50px rgba(27, 156, 216, 0.12);
+	border-left: 8px solid rgba(46, 27, 216, 0.18);
+}
+
+.n-accent {
+	/* Barra vertical de acento para la tarjeta de historia */
+	position: absolute;
+	left: -28px;
+	top: 18px;
+	width: 12px;
+	height: 72%;
+	background: linear-gradient(180deg, #ffd86b, #7fd1ff);
+	border-radius: 8px;
+}
+
+.n-titulo {
+	/* Título de la sección Historia con degradado text-clip */
+	font-size: 2.25rem;
+	margin: 6px 0 12px 0;
+	font-weight: 800;
+	background: linear-gradient(90deg, #2693ec, #1b73d8);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.n-info {
+	/* Párrafo principal de la historia */
+	font-size: 1.05rem;
+	color: #333;
+	line-height: 1.55;
+	margin-bottom: 18px;
+}
+
+.cta-small { display: none; }
+
+/* Footer / pie de página         */
+footer {
+	background-color: #ffd86b;
+	color: #222222;
+	margin-top: 40px;
+}
+
+.footer-inferior {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 30px;
+	gap: 20px;
+}
+
+.footer-izquierdo .phone {
+	font-weight: bold;
+}
+
+.footer-derecho {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.footer-logo {
+	height: 40px;
+	width: 40px;
+	object-fit: contain;
+}
+
+.footer-centro {
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer-izquierdo {
+	display: flex;
+	align-items: center;
+}
+
+.facebook-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	text-decoration: none;
+	color: black;
+	background-color: rgba(255,255,255,0.6);
+	padding: 6px 10px;
+	border-radius: 8px;
+	transition: background-color 0.2s, transform 0.15s;
+}
+
+.facebook-link:hover,
+.facebook-link:focus {
+	background-color: rgba(255,255,255,0.85);
+	transform: translateY(-2px);
+}
+
+.facebook-link svg {
+	display: block;
+}
+
+.footer-bottom {
+	text-align: center;
+	padding: 10px 0 18px 0;
+	background-color: rgba(0,0,0,0.05);
+	font-size: 14px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 700px) {
+	.cabecera { gap: 20px; }
+	.items-cabecera { gap: 16px; }
+	.footer-inferior { flex-direction: column; align-items: flex-start; }
+	.imagen-01 { width: 90%; height: auto; margin: 20px auto; float: none; }
+}
+
+@media (max-width: 900px) {
+
+	/* Mantener la cabecera en una sola línea en pantallas pequeñas */
+	.cabecera { flex-wrap: nowrap; }
+	.logo { height: 36px; width: 36px; }
+
+	/* Mostrar los enlaces en fila compacta dentro de la cabecera en móvil, sin que salgan */
+	.menu + .items-cabecera {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+		align-items: center;
+		background: transparent; /* quitar fondo para no aumentar altura */
+		padding: 0;
+		margin-left: auto; /* empujar enlaces a la derecha */
+		white-space: nowrap;
+		overflow-x: auto; /* permitir desplazamiento horizontal si hace falta */
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.menu + .items-cabecera a,
+	.menu[open] + .items-cabecera a {
+		padding: 6px 8px; /* menos padding para que quepan */
+		font-size: 0.95rem;
+	}
+
+
+	.hero-title { font-size: 1.8rem; }
+	.i-left .hero-title { font-size: 1.9rem; }
+	.i-right { display: block; width: 200px; height: 260px; flex: 0 0 200px; }
+}
+
+@media (max-width: 760px) {
+	.nosotros-inner { flex-direction: column; }
+	.n-left, .n-right { width: 100%; }
+	.imagen-01 { height: 300px; }
+	.n-card { padding: 22px; }
+	.n-titulo { font-size: 1.75rem; }
+}
+
+/* Sección Galería                */
+.galeria {
+	padding: 60px 6%;
+	/* Galería: rojo pastel */
+	background: linear-gradient(180deg, #ff9a9a 0%, #ffd6d6 100%);
+	color: #222222;
+}
+
+/* Ubicación: usar la misma paleta roja pastel que la galería */
+.ubicacion {
+	padding: 40px 6%;
+	background: linear-gradient(180deg, #ff9a9a 0%, #ffd6d6 100%);
+	color: #222222;
+}
+
+.galeria-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	position: relative; /* permitir posicionamiento absoluto de controles globales */
+}
+
+.g-title {
+	font-size: 2.25rem;
+	margin-bottom: 8px;
+	font-weight: 800;
+	color: #222222;
+}
+
+.g-sub {
+	color: rgba(0,0,0,0.7);
+	margin-bottom: 24px;
+}
+
+.galeria-grid {
+	/* Pista horizontal desplazable (sin JS): miniaturas en fila */
+	display: flex;
+	gap: 18px;
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+	padding-bottom: 6px;
+	/* espacio lateral para que las flechas posicionadas "fuera" no se recorten */
+	padding-left: 56px;
+	padding-right: 56px;
+	scroll-snap-type: x mandatory;
+	position: relative;
+}
+
+.g-item {
+	display: block;
+	/* Permitimos overflow visible para que las flechas posicionadas "fuera"
+	   no queden recortadas.*/
+	overflow: visible;
+	border-radius: 12px;
+	box-shadow: 0 14px 40px rgba(2,9,23,0.6);
+	transition: transform .25s ease, box-shadow .25s ease;
+	border: 3px solid rgba(255,255,255,0.03);
+	flex: 0 0 calc(33.333% - 12px);
+	scroll-snap-align: center;
+	position: relative; /* para posicionar las flechas relativas al item */
+}
+
+.g-item img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	display: block;
+	transition: transform .35s ease;
+	/* Aplicar border-radius a la imagen para mantener el recorte visual */
+	border-radius: 12px;
+}
+
+/* Ocultar scrollbar visualmente pero permitir scroll (estética) */
+.galeria-grid::-webkit-scrollbar { height: 8px; display: none; }
+.galeria-grid { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Flechas de navegación (enlaces dentro de cada miniatura) */
+.g-prev, .g-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(255,255,255,0.08);
+	color: #fff;
+	width: 44px;
+	height: 44px;
+	border-radius: 999px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	font-size: 22px;
+	box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+	opacity: 0.98;
+	z-index: 12;
+}
+
+/* Ocultamos las flechas por-slide ahora que tenemos controles globales */
+.g-item .g-prev, .g-item .g-next { display: none; }
+
+/* Controles globales colocados fuera de la pista */
+.g-prev-global, .g-next-global {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.09);
+    color: #05233b;
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 28px;
+    box-shadow: 0 10px 28px rgba(2,9,23,0.45);
+    cursor: pointer;
+    z-index: 20;
+}
+.g-prev-global { left: 6px; }
+.g-next-global { right: 6px; }
+.g-prev-global:focus, .g-next-global:focus { outline: 3px solid rgba(255,255,255,0.18); }
+/* Colocar las flechas justo fuera de la miniatura para que parezcan globales */
+.g-prev { left: -48px; }
+.g-next { right: -48px; }
+.g-prev:hover, .g-next:hover { transform: translateY(-50%) scale(1.05); background: rgba(255,255,255,0.12); }
+
+.g-item:hover {
+	transform: translateY(-6px) scale(1.02);
+	box-shadow: 0 24px 60px rgba(2,9,23,0.75);
+}
+
+.g-item:hover img { transform: scale(1.08); }
+
+/* Ajustes responsivos para la galería */
+@media (max-width: 900px) {
+	.galeria-grid { grid-template-columns: repeat(2, 1fr); }
+	.g-item img { height: 200px; }
+}
+
+@media (max-width: 520px) {
+	.galeria-grid { grid-template-columns: 1fr; }
+	.g-item img { height: 260px; }
+}
+
+/* Ajustes para mostrar las flechas fuera pero sin recortes en móviles */
+@media (max-width: 720px) {
+	.galeria-grid { padding-left: 18px; padding-right: 18px; }
+	.g-prev { left: 6px; }
+	.g-next { right: 6px; }
+	.g-item img { height: 160px; }
+}
+
+/* Sección Ubicación             */
+.ubicacion {
+	padding: 40px 6%;
+	/* Ubicación: rojo pastel (coincide con galería) */
+	background: linear-gradient(180deg, #ff9a9a 0%, #ffd6d6 100%);
+	color: #222222; /* texto oscuro para mejor legibilidad sobre el rojo claro */
+}
+.ubicacion-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
+.u-title {
+	font-size: 2rem;
+	margin-bottom: 8px;
+	font-weight: 800;
+	/* degradado de texto acorde a otros títulos */
+	background: linear-gradient(90deg, #013d6e, #1b73d8);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.u-sub {
+	color: rgba(5,35,59,0.85);
+	margin-bottom: 18px;
+	font-size: 1rem;
+}
+.map-placeholder {
+	min-height: 260px;
+	background: #ffffff;
+	border-radius: 12px;
+	border: 1px solid rgba(5,35,59,0.06);
+	box-shadow: 0 12px 30px rgba(27,156,216,0.06);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+	padding: 18px;
+	margin-top: 10px;
+}
+
+body{
+	/* Fondo global: rojo pastel claro, como solicitaste */
+	background-color: #ffd6d6;
+}
+@media (max-width: 900px) {
+	.u-title { font-size: 1.6rem; }
+	.map-placeholder { min-height: 200px; }
+}
+
+@media (max-width: 520px) {
+	.u-title { font-size: 1.25rem; }
+	.map-placeholder { min-height: 160px; }
+}

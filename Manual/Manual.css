@@ -1,0 +1,149 @@
+/* Manual - estilos*/
+
+/* Paleta aplicada directamente (sin variables):
+   amarillo pastel claro: #fff4c2
+   amarillo acento: #ffd86b
+   azul pastel claro: #bfeeff
+   azul acento: #7fd1ff
+   rojo pastel claro: #ffd6d6
+   rojo acento: #ff9a9a
+   texto oscuro: #222222
+*/
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+/* Base tipográfica */
+body {
+  font-family: Trebuchet MS, Segoe UI, Arial, sans-serif;
+  margin: 0;
+  color: #111;
+  font-size: 16px;
+  line-height: 1.6;
+  background: #fff;
+}
+
+/* Portada / Hero  */
+.m-hero {
+  /* Cabecera del manual: amarillo pastel */
+  background: linear-gradient(135deg, #fff4c2, #ffd86b);
+  color: #222222;
+  padding: 80px 20px 56px;
+  text-align: center;
+}
+
+.m-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.m-logo {
+  width: 84px;
+  height: auto;
+  margin-bottom: 14px;
+}
+
+.m-hero h1 {
+  font-size: 2.6rem;
+  margin: 8px 0;
+}
+
+.m-sub {
+  opacity: .95;
+  margin-bottom: 22px;
+  font-size: 1.05rem;
+}
+
+.m-cta {
+  display: inline-block;
+  background: #ffd6d6;
+  color: #222222;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+
+/* Contenido principal*/
+.m-container {
+  max-width: 980px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.m-container section {
+  margin-bottom: 26px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.m-container h2 {
+  color: #222222;
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+}
+
+.m-container p {
+  margin: 0 0 12px;
+  color: #222;
+}
+
+.m-container ul {
+  margin: 0 0 12px 20px;
+  padding: 0;
+}
+
+.m-container li {
+  margin-bottom: 8px;
+}
+
+.m-container code {
+  background: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #111;
+  font-size: .95rem;
+}
+
+/* Pie del manual */
+.m-footer {
+  text-align: center;
+  padding: 18px 10px;
+  background: #ffd86b;
+  color: #222222;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  margin-top: 20px;
+}
+
+/* Secciones específicas: aplicar colores según la paleta */
+#introduccion { background: linear-gradient(180deg, #fff4c2 0%, #fff 100%); color: #222222; }
+#como-funciona { background: linear-gradient(180deg, #fff4c2 0%, #fff 100%); color: #222222; }
+#historia { background: linear-gradient(180deg, #bfeeff 0%, #7fd1ff 60%); color: #222222; }
+#galeria { background: linear-gradient(180deg, #ff9a9a 0%, #ffd6d6 100%); color: #222222; }
+#ubicacion { background: linear-gradient(180deg, #ff9a9a 0%, #ffd6d6 100%); color: #222222; }
+#contacto { background: linear-gradient(180deg, #fff4c2 0%, #fff 100%); color: #222222; }
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 640px) {
+  .m-hero {
+    padding: 42px 12px;
+  }
+  .m-hero h1 {
+    font-size: 1.8rem;
+  }
+  .m-logo {
+    width: 56px;
+  }
+  .m-container {
+    padding: 0 14px;
+  }
+  .m-container section {
+    padding: 14px;
+  }
+}

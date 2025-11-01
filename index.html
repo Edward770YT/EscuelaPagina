@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Escuela Primaria Media Jornada Venezuela</title>
+	<link rel="stylesheet" href="archivos/css/style.css">
+</head>
+<body>
+<header>
+	<!-- SECCIÓN: Cabecera -->
+	<nav class="cabecera">
+		<img src="archivos/imgs/logoo.png" alt="logo de la institucion" class="logo">
+		<details class="menu" role="navigation">
+			<summary class="menu-summary" aria-haspopup="true">Menú ▾</summary>
+		</details>
+		<div class="items-cabecera" id="main-nav">
+			<a href="#">Inicio</a>
+			<details class="dropdown" role="menu">
+				<summary class="drop-btn" aria-haspopup="true">Más ▾</summary>
+				<ul class="drop-menu" role="menu" aria-label="Más">
+					<li role="menuitem"><a href="#Nosotros">Nosotros</a></li>
+					<li role="menuitem"><a href="#Galeria">Galeria</a></li>
+					<li role="menuitem"><a href="#Ubicacion">Ubicacion</a></li>
+					<li role="menuitem"><a href="Manual/Manual.html">Manual De Usuario</a></li>
+				</ul>
+			</details>
+		</div>
+	</nav>
+    </header>
+<!-- SECCIÓN: Inicio -->
+	<section class="inicio">
+		<div class="inicio-inner">
+			<div class="i-left">
+				<h1 class="hero-title">Escuela Primaria Bolivariana Media Jornada Venezuela</h1>
+				<p class="hero-sub">Más de 60 años formando futuros. Educación con compromiso y pasión por la comunidad.</p>
+				<a href="#Nosotros" class="cta-btn">Conócenos</a>
+			</div>
+			<div class="i-right" aria-hidden="true"></div>
+		</div>
+	</section>
+
+
+<!-- SECCIÓN: Historia -->
+	<section class="Nosotros" id="Nosotros">
+		<div class="nosotros-inner">
+			<div class="n-left" aria-hidden="true">
+				<img src="archivos/imgs/aula1.jpg" alt="Aula histórica" class="imagen-01">
+			</div>
+			<div class="n-right">
+				<div class="n-card">
+					<div class="n-accent"></div>
+					<h2 class="n-titulo">Historia</h2>
+					<p class="n-info">La EPBMJ Venezuela comenzó en 1960 en una casa de familia y, gracias al esfuerzo de la comunidad, sus fundadores y la dedicación de sus docentes, fue creciendo hasta convertirse en la institución que conocemos hoy. Está ubicada en la calle 44 con carreras 27 y 26, Parroquia Concepción, Municipio Iribarren, Barquisimeto - Lara.</p>
+					<a href="#" class="cta-small">Leer más</a>
+				</div>
+			</div>
+		</div>
+	    
+		<div class="nosotros-inner">
+			<div class="n-left" aria-hidden="true">
+				<img src="archivos/imgs/frente.jpg" alt="Aula histórica" class="imagen-01">
+			</div>
+			<div class="n-right">
+				<div class="n-card">
+					<div class="n-accent"></div>
+					<h2 class="n-titulo">Misión y Visión</h2>
+					<p class="n-info">Nuestra misión es atender las necesidad educativas de los niños y las niñas fortaleciendo el desarrollo de habilidades y destrezas para la formación de individuos reflexivos capaces de participar activamente en el proceso de cambio social, político, cultural, ecológico y económico mediante una Educación Integral bajo lineamientos del Ministerio del Poder Popular para la Educación, enmarcados en la Educación Bolivariana. La visión es estimular a los niños ofreciendo un aprendizaje crítico, análitico, reflexivo, participativo y humanista, para la consolidación de los aprendizajes significativos de los y las estudiantes de educación inicial y primaria.</p>
+					<a href="#" class="cta-small">Leer más</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECCIÓN: Galería -->
+	<section class="galeria" id="Galeria">
+		<div class="galeria-inner">
+			<h2 class="g-title">Galería</h2>
+			<p class="g-sub">Momentos, actividades y espacios de nuestra institución.</p>
+			<div class="galeria-grid">
+				<div class="g-item" id="slide1">
+					<a class="g-prev" href="#slide6" aria-label="Anterior">‹</a>
+					<img src="archivos/imgs/slider1.jpg" alt="Galeria 1">
+					<a class="g-next" href="#slide2" aria-label="Siguiente">›</a>
+				</div>
+				<div class="g-item" id="slide2">
+					<a class="g-prev" href="#slide1" aria-label="Anterior">‹</a>
+					<img src="archivos/imgs/slider2.jpg" alt="Galeria 2">
+					<a class="g-next" href="#slide3" aria-label="Siguiente">›</a>
+				</div>
+				<div class="g-item" id="slide3">
+					<a class="g-prev" href="#slide2" aria-label="Anterior">‹</a>
+					<img src="archivos/imgs/slider3.jpg" alt="Galeria 3">
+					<a class="g-next" href="#slide4" aria-label="Siguiente">›</a>
+				</div>
+				<div class="g-item" id="slide4">
+					<a class="g-prev" href="#slide3" aria-label="Anterior">‹</a>
+					<img src="archivos/imgs/slider4.jpg" alt="Galeria 4">
+					<a class="g-next" href="#slide5" aria-label="Siguiente">›</a>
+				</div>
+				<div class="g-item" id="slide5">
+					<a class="g-prev" href="#slide4" aria-label="Anterior">‹</a>
+					<img src="archivos/imgs/slider5.jpg" alt="Galeria 5">
+					<a class="g-next" href="#slide6" aria-label="Siguiente">›</a>
+				</div>
+				<div class="g-item" id="slide6">
+					<a class="g-prev" href="#slide5" aria-label="Anterior">‹</a>
+					<img src="archivos/imgs/slider6.jpg" alt="Galeria 6">
+					<a class="g-next" href="#slide1" aria-label="Siguiente">›</a>
+				</div>
+			</div>
+
+			<!-- SECCIÓN: Controles Galería -->
+			<button class="g-prev-global" aria-label="Anterior galería">‹</button>
+			<button class="g-next-global" aria-label="Siguiente galería">›</button>
+		</div>
+	</section>
+<!-- SECCIÓN: Ubicación -->
+	<section class="ubicacion" id="Ubicacion">
+		<div class="ubicacion-inner">
+			<h2 class="u-title">Ubicación</h2>
+			<p class="u-sub">calle 44 con carrera 27 y 26 3001 Barquisimeto, Venezuela.</p>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d982.0824631985554!2d-69.3364106118651!3d10.07203538055458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8766fdfe63926f%3A0xd8ed5da8af1f9655!2sUnidad%20Educativa%20Venezuela!5e0!3m2!1ses-419!2sve!4v1761876866761!5m2!1ses-419!2sve"
+			 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+	</section>
+
+	<footer>
+<!-- SECCIÓN: Footer -->
+	<div class="footer-inferior" id="Footer-Final">
+		<div class="footer-izquierdo">
+			<img src="archivos/imgs/logoo.png" alt="logo pequeño" class="footer-logo">
+		</div>
+		<div class="footer-centro">
+			<p class="phone">Telefono: +58 0251-XXXXXXX</p>
+		</div>
+	<div class="footer-derecho">
+		<a class="facebook-link" href="https://www.facebook.com/p/Escuela-Primaria-Bolivariana-Media-Jornada-Venezuela-Fundada-el-28051957-100064070348200/" title="Visítanos en Facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+	<!-- SECCIÓN: Icono FB -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#3b5998" aria-hidden="true">
+		<path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"/>
+		</svg>
+		<span class="facebook-text">Facebook</span>
+		</a>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<p>&copy; 2025 Escuela Primaria Bolivariana Media Jornada Venezuela. Todos los derechos reservados.</p>
+	</div>
+</footer>
+
+<!-- SECCIÓN: Carousel JS -->
+	<script src="archivos/JS/carousel.js"></script>
+</body>
+</html>
